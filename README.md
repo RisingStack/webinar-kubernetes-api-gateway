@@ -52,7 +52,7 @@ http://localhost:3000/docs
 
 http://localhost:3000/docs
 
-![Swagger API Gateway](images/swagger_api_gateway)
+![Swagger API Gateway](images/swagger_api_gateway.png)
 
 ## Distributed Tracing
 
