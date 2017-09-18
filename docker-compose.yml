@@ -1,0 +1,42 @@
+version: '3.3'
+services:
+  redis:
+    image: redis:4.0.1-alpine
+  jaeger:
+    ports:
+     - "5775:5775/udp"
+     - "6831:6831/udp"
+     - "6832:6832/udp" # default UDP reporter port
+     - "16686:16686"   # UI port
+     - "14268:14268"
+    image: jaegertracing/all-in-one:latest
+  api-gateway:
+    depends_on:
+      - redis
+      - user-api
+      - vehicle-api
+    build: services/api-gateway
+    restart: on-failure
+    ports:
+      - "3000:3000" #entrypoint
+    environment:
+      JAEGER_HOST: jaeger
+      REDIS_URI: redis://redis:6379
+      USER_API_SERVICE_HOST: user-api
+      USER_API_SERVICE_PORT: 3000
+      VEHICLE_API_SERVICE_HOST: vehicle-api
+      VEHICLE_API_SERVICE_PORT: 3000
+  user-api:
+    build: services/user-api
+    restart: on-failure
+    ports:
+     - "3001:3000" # exposed for debugging
+    environment:
+      JAEGER_HOST: jaeger
+  vehicle-api:
+    build: services/vehicle-api
+    restart: on-failure
+    ports:
+     - "3002:3000" # exposed for debugging
+    environment:
+      JAEGER_HOST: jaeger

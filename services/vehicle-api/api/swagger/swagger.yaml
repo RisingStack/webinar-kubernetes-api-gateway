@@ -1,0 +1,62 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: Vehicle API
+  description: API Gateway
+basePath: /
+tags:
+  - name: vehicle
+    description: Vehicle API
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /vehicles:
+    x-swagger-router-controller: vehicleController
+    get:
+      operationId: get
+      tags:
+        - vehicle
+      description: Return with vehicles
+      parameters:
+      - name: userIds
+        description: User id(s)
+        in: query
+        type: array
+        uniqueItems: true
+        items:
+          type: integer
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Vehicle'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+definitions:
+  Vehicle:
+    properties:
+      id:
+        type: string
+      vehicleId:
+        type: string
+      name:
+        type: string
+    required:
+      - id
+      - vehicleId
+  ErrorResponse:
+    properties:
+      message:
+        type: string
+    required:
+      - message

@@ -1,0 +1,64 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: API Gateway
+  description: API Gateway
+host: localhost:3000
+basePath: /
+tags:
+  - name: user
+    description: User
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /users:
+    x-swagger-router-controller: userController
+    get:
+      operationId: get
+      tags:
+        - user
+      description: Return with users
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+
+definitions:
+  User:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+      vehicles:
+        type: array
+        items:
+          $ref: '#/definitions/Vehicle'
+    required:
+      - id
+  Vehicle:
+    properties:
+      id:
+        type: string
+      name:
+        type: string
+    required:
+      - id
+  ErrorResponse:
+    properties:
+      message:
+        type: string
+    required:
+      - message

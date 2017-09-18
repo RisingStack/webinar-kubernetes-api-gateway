@@ -1,0 +1,21 @@
+{
+  "name": "api-gateway",
+  "version": "0.0.1",
+  "private": true,
+  "description": "API Gateway",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@risingstack/opentracing-auto": "1.4.3",
+    "express": "4.15.4",
+    "jaeger-client": "3.5.3",
+    "ratelimiter": "3.0.3",
+    "redis": "2.8.0",
+    "swagger-client-sync": "1.0.3",
+    "swagger-express-mw": "0.7.0",
+    "swagger-ui-dist": "3.1.5",
+    "winston": "2.3.1"
+  }
+}
