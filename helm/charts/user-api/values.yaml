@@ -1,0 +1,3 @@
+image:
+  repository: services/user-api
+  tag: "v1"

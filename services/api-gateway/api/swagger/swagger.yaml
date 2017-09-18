@@ -3,7 +3,6 @@ info:
   version: "0.0.1"
   title: API Gateway
   description: API Gateway
-host: localhost:3000
 basePath: /
 tags:
   - name: user
@@ -30,6 +29,22 @@ paths:
             type: array
             items:
               $ref: '#/definitions/User'
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
+  /healthz:
+    x-swagger-router-controller: healthzController
+    get:
+      description: Returns application health
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
         default:
           description: Error
           schema:

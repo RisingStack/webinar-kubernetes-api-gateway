@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+  name: {{ .Chart.Name }}-redis
+spec:
+  ports:
+  - port: 6379
+    protocol: TCP
+    targetPort: redis
+  selector:
+    app: {{ .Chart.Name }}-redis
+  type: ClusterIP

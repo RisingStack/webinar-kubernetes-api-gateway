@@ -1,0 +1,46 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Chart.Name }}-redis
+  labels:
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+spec:
+  template:
+    metadata:
+      labels:
+        app: {{ .Chart.Name }}-redis
+    spec:
+      containers:
+      - command:
+        - redis-server
+        - --appendonly
+        - "yes"
+        image: redis:4.0.1-alpine
+        name: {{ .Chart.Name }}-redis
+        ports:
+        - containerPort: 6379
+          name: redis
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 120m
+            memory: 386Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+        livenessProbe:
+          exec:
+            command:
+            - redis-cli
+            - ping
+          initialDelaySeconds: 30
+          timeoutSeconds: 5
+        readinessProbe:
+          exec:
+            command:
+            - redis-cli
+            - ping
+          initialDelaySeconds: 5
+          timeoutSeconds: 1

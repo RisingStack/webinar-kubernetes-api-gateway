@@ -41,7 +41,22 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-
+  /healthz:
+    x-swagger-router-controller: healthzController
+    get:
+      description: Returns application health
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              status:
+                type: string
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
 definitions:
   Vehicle:
     properties:

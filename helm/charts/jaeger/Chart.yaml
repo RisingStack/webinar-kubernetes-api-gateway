@@ -1,0 +1,4 @@
+apiVersion: v1
+description: jaeger
+name: jaeger
+version: 0.1.0
