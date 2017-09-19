@@ -2,6 +2,8 @@
 
 Demonstrating a HTTP based microservices and API gateway with Kubernetes and Helm.
 
+## Architecture
+
 ![Architecture](images/webinar-microservices-diagram.png)
 
 ## Getting Started
