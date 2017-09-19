@@ -34,9 +34,3 @@ helm install --name services ./helm
 minikube service api-gateway
 minikube service jaeger-query
 ```
-
-## Troubleshooting
-
-### Failing probes on minikube
-
-See: https://github.com/kubernetes/minikube/issues/999

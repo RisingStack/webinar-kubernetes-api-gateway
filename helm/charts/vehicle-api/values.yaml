@@ -1,3 +1,1 @@
-image:
-  repository: services/vehicle-api
-  tag: v2
+image: registry.hub.docker.com/risingstack/webinar-ms-vehicle-api:v1

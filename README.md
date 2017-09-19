@@ -1,5 +1,7 @@
 # Microservices​ ​with​ ​Node.js​ ​and​ ​Kubernetes​
 
+Demonstrating a HTTP based microservices and API gateway with Kubernetes and Helm.
+
 ## Getting Started
 
 - [Azure Container Service](/docs/azure.md)

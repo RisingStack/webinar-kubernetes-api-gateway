@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: {{ .Chart.Name }}
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: {{ .Values.image }}
         env:
           - name: JAEGER_HOST
             value: jaeger-agent.{{ .Release.Namespace }}
@@ -29,19 +29,3 @@ spec:
           limits:
             memory: 1536Mi
             cpu: 55m
-        livenessProbe:
-          httpGet:
-            path: /healthz
-            port: server
-            scheme: HTTP
-          initialDelaySeconds: 10
-          failureThreshold: 3
-          periodSeconds: 5
-        readinessProbe:
-          httpGet:
-            path: /healthz
-            port: server
-            scheme: HTTP
-          initialDelaySeconds: 10
-          failureThreshold: 3
-          periodSeconds: 5

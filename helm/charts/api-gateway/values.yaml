@@ -1,3 +1,1 @@
-image:
-  repository: services/api-gateway
-  tag: v2
+image: registry.hub.docker.com/risingstack/webinar-ms-api-gateway:v1
