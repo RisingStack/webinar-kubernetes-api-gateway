@@ -67,6 +67,15 @@ SwaggerExpress.create(swaggerConfig, (err, swaggerExpress) => {
   swaggerExpress.register(app)
 
   // API Docs
+  app.get('/', (req, res) => {
+    const query = req.query
+    query.url = '/api-docs'
+    res.redirect(301, url.format({
+      pathname: '/docs',
+      query
+    }))
+  })
+
   app.get('/api-docs', (req, res) => {
     res.set('Content-Type', 'text/yaml')
     res.sendFile(path.join(__dirname, 'api/swagger/swagger.yaml'))
