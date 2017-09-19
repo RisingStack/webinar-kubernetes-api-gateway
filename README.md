@@ -2,6 +2,8 @@
 
 Demonstrating a HTTP based microservices and API gateway with Kubernetes and Helm.
 
+![Architecture](images/webinar-microservices-diagram)
+
 ## Getting Started
 
 - [Azure Container Service](/docs/azure.md)
