@@ -13,6 +13,8 @@ az acs create --resource-group webinar-microservices --name my-services --genera
 az acs kubernetes get-credentials --resource-group webinar-microservices --name my-services --ssh-key-file ~/.ssh/id_rsa
 ```
 
+For more information check out the official [Azure Container Service with Kubernetes Documentation](https://docs.microsoft.com/en-us/azure/container-service/kubernetes/).
+
 ## 2. Installing Helm chart
 
 Azure Container Services comes with a pre-installed helm tiller.  
@@ -22,6 +24,14 @@ You should be sure that your local helm matches the version of the server: `helm
 helm init
 helm install --name services ./helm
 ```
+
+You can expose the `api-gateway` service via `LoadBalancer`:
+
+```sh
+helm upgrade services ./helm/ --set api-gateway.public=true
+```
+
+To read more about helm check out the [Packing a Kubernetes Microservices App with Helm on Azure Container Service](https://open.microsoft.com/2017/05/23/kubernetes-helm-microsoft-azure-container-service/) article.
 
 ## 3. Accessing Application
 

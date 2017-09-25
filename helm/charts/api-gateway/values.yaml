@@ -1,1 +1,2 @@
 image: registry.hub.docker.com/risingstack/webinar-ms-api-gateway:v1
+public: false
