@@ -15,8 +15,11 @@ az acs kubernetes get-credentials --resource-group webinar-microservices --name 
 
 ## 2. Installing Helm chart
 
+Azure Container Services comes with a pre-installed helm tiller.  
+You should be sure that your local helm matches the version of the server: `helm version`
+
 ```sh
-helm init --upgrade
+helm init
 helm install --name services ./helm
 ```
 
