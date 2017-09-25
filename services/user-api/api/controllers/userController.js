@@ -1,5 +1,6 @@
 'use strict'
 
+// Simple user database
 const USER_DB = [
   {
     id: 1,
@@ -14,8 +15,8 @@ const USER_DB = [
 /**
 * List users
 * @function get
-* @param {Object} req
-* @param {Object} res
+* @param {express.Request} req
+* @param {express.Response} res
 * @param {Function} next
 */
 async function get (req, res, next) {

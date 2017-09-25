@@ -3,8 +3,8 @@
 /**
 * List users via user-api and vehicle-api
 * @function get
-* @param {Object} req
-* @param {Object} res
+* @param {express.Request} req
+* @param {express.Response} res
 * @param {Function} next
 */
 function get (req, res, next) {

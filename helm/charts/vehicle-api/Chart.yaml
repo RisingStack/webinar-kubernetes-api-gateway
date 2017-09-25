@@ -1,4 +1,4 @@
 apiVersion: v1
-description: vehicle-api services
+description: vehicle-api service
 name: vehicle-api
 version: 0.1.0

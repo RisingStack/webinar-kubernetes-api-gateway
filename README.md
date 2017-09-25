@@ -12,6 +12,13 @@ Demonstrating a HTTP based microservices and API gateway with Kubernetes and Hel
 - [Docker Compose](/docs/docker-compose.md)
 - [Minikube](/docs/minikube.md)
 
+## Used technologies
+
+- [Node.js](https://nodejs.org/en/)
+- [Swagger](https://swagger.io)
+- [Kubernetes](https://kubernetes.io/)
+- [Helm](https://github.com/kubernetes/helm)
+
 ## Docs
 
 http://localhost:3000/docs

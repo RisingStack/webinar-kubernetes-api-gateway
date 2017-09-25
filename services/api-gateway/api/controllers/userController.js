@@ -18,8 +18,8 @@ let vehicleClient
 /**
 * List users via user-api and vehicle-api
 * @function get
-* @param {Object} req
-* @param {Object} res
+* @param {express.Request} req
+* @param {express.Response} res
 * @param {Function} next
 */
 async function get (req, res, next) {
@@ -27,9 +27,12 @@ async function get (req, res, next) {
   const { obj: users } = await User.apis.user.get()
   logger.debug('Get users', users)
 
+  // Fetch vehicles by user ids
   const userIds = users.map((user) => user.id)
   const Vehicle = await getVehicleClient()
   const { obj: vehicles } = await Vehicle.apis.vehicle.get({ userIds })
+
+  // Map vehicles by user ids
   const vehiclesByUserId = vehicles.reduce((vehiclesByUserId, vehicle) => {
     vehiclesByUserId[vehicle.userId] = vehiclesByUserId[vehicle.userId] || []
     vehiclesByUserId[vehicle.userId].push(vehicle)
@@ -37,6 +40,7 @@ async function get (req, res, next) {
   }, {})
   logger.debug('Get vehicles', vehicles)
 
+  // Response with users and vehicles together
   const responseUsers = users.map((user) => {
     const userVehicles = vehiclesByUserId[user.id] || []
 
@@ -53,6 +57,7 @@ async function get (req, res, next) {
 }
 
 /**
+* Singleton that resolves User API client 
 * @function getUserClient
 * @param {Promise} client - swagger client
 */
@@ -66,6 +71,7 @@ async function getUserClient () {
 }
 
 /**
+* Singleton that resolves Vehicle API client
 * @function getVehicleClient
 * @param {Promise} client - swagger client
 */

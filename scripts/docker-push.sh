@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Builds and pushes Docker images to DockerHub
+
 TAG=$1
 TAG=${TAG:-"v1"}
 

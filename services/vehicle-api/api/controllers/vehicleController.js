@@ -1,5 +1,6 @@
 'use strict'
 
+// Simple vehicle database
 const VEHICLE_DB = [
   {
     id: 1,
@@ -21,11 +22,12 @@ const VEHICLE_DB = [
 /**
 * List vehicles
 * @function get
-* @param {Object} req
-* @param {Object} res
+* @param {express.Request} req
+* @param {express.Response} res
 * @param {Function} next
 */
 async function get (req, res, next) {
+  // Filter vehicles by user ids
   const userIds = req.swagger.params.userIds.value
   const vehicles = userIds
     ? VEHICLE_DB.filter((vehicle) => userIds.includes(vehicle.userId))

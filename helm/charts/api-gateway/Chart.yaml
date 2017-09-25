@@ -1,4 +1,4 @@
 apiVersion: v1
-description: api-gateway services
+description: api-gateway service
 name: api-gateway
 version: 0.1.0
